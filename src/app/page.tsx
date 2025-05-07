@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <h1>Projeto Dogs</h1>
+      <h1 className="title">Projeto Dogs</h1>
     </main>
   );
 }
