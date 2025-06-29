@@ -1,7 +1,11 @@
-import React from 'react'
+import LoginForm from '@/components/login/login-form';
+import React from 'react';
 
 export default function Login() {
   return (
-    <div>Login</div>
-  )
+    <section className="animeLeft">
+      <h1 className="title">Login</h1>
+      <LoginForm />
+    </section>
+  );
 }
