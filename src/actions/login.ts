@@ -1,19 +1,37 @@
 'use server';
 
+import apiError from '@/functions/api-error';
 import { cookies } from 'next/headers';
 
-export default async function login(formData: FormData) {
-  const response = await fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
-    method: 'POST',
-    body: formData,
-  });
+export default async function login(state: {}, formData: FormData) {
+  const username = formData.get('username') as string | null;
+  const password = formData.get('password') as string | null;
 
-  const data = await response.json();
+  try {
+    if (!username || !password) {
+      throw new Error('Preencha os dados.');
+    }
 
-  cookies().set('token', data.token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'lax',
-    maxAge: 60 * 60 * 24
-  });
+    const response = await fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Senha ou usuário inválidos!');
+    }
+
+    const data = await response.json();
+
+    cookies().set('token', data.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24,
+    });
+
+    return { data: null, ok: true, error: '' };
+  } catch (error: unknown) {
+    return apiError(error);
+  }
 }
