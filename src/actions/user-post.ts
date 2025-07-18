@@ -37,4 +37,3 @@ export default async function registerUser(state: {}, formData: FormData) {
   }
 }
 
-// TO DO - FAZER VERIRICAÇÃO COM ZOD

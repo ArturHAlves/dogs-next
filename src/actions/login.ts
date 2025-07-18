@@ -3,6 +3,8 @@
 import apiError from '@/functions/api-error';
 import { cookies } from 'next/headers';
 
+const API_URL = process.env.DOGS_API_URL ?? 'https://dogsapi.origamid.dev/json';
+
 export default async function login(state: {}, formData: FormData) {
   const username = formData.get('username') as string | null;
   const password = formData.get('password') as string | null;
@@ -12,7 +14,7 @@ export default async function login(state: {}, formData: FormData) {
       throw new Error('Preencha os dados.');
     }
 
-    const response = await fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
+    const response = await fetch(`${API_URL}/jwt-auth/v1/token`, {
       method: 'POST',
       body: formData,
     });

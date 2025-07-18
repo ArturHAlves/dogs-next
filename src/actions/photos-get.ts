@@ -12,10 +12,10 @@ export type Photo = {
   total_comments: string;
 };
 
+const API_URL = process.env.DOGS_API_URL ?? 'https://dogsapi.origamid.dev/json/api';
+
 export default async function photosGet() {
-  const response = await fetch(
-    'https://dogsapi.origamid.dev/json/api/photo/?_page=1&_total=6&_user=0',
-  );
+  const response = await fetch(`${API_URL}/photo/?_page=1&_total=6&_user=0`);
 
   const data = (await response.json()) as Photo[];
   return data;
