@@ -1,13 +1,26 @@
-import { Metadata } from 'next'
-import React from 'react'
+import LoginResetarForm from '@/components/login/login-resetar-form';
+import { Metadata } from 'next';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Resetar a senha | ONG Dogs',
-  description: 'Resete a sua senha'
-}
+  description: 'Resete a sua senha',
+};
 
-export default function ResetarSenha() {
+type Props = {
+  searchParams: {
+    key: string;
+    login: string;
+  };
+};
+
+export default function ResetarSenha({ searchParams }: Props) {
+  console.log(searchParams);
+
   return (
-    <div>ResetarSenha</div>
-  )
+    <div className="animeLeft">
+      <h1 className="title">Resete a Senha</h1>
+      <LoginResetarForm keyToken={searchParams.key} login={searchParams.login} />
+    </div>
+  );
 }

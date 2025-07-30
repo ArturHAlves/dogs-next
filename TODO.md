@@ -1,2 +1,5 @@
+
+VERSÃO 2 
 // TO DO - FAZER VERIRICAÇÃO COM ZOD
-// to do - ORGANIZAR AS COM PASTA TIPAGENS 
+// TO DO - ORGANIZAR AS COM PASTA TIPAGENS 
+// TO DO - Criar visibilidade do password - ver/não
