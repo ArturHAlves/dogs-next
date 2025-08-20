@@ -1,12 +1,12 @@
-'use client';
 
-import { useUser } from '@/context/user-context';
-import React from 'react'
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Minha Conta',
+  description: 'Minha Conta no site ONG Dogs',
+};
 
 export default function Conta() {
-  const { user } = useUser();
-
-  return (
-    <div>Conta: { user?.nome }</div>
-  )
+  return <div>Conta</div>;
 }
