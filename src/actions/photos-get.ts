@@ -15,7 +15,9 @@ export type Photo = {
 const API_URL = process.env.DOGS_API_URL ?? 'https://dogsapi.origamid.dev/json/api';
 
 export default async function photosGet() {
-  const response = await fetch(`${API_URL}/photo/?_page=1&_total=6&_user=0`);
+  const response = await fetch(`${API_URL}/photo/?_page=1&_total=6&_user=0`, {
+    next: { revalidate: 10, tags: ['photos'] },
+  });
 
   const data = (await response.json()) as Photo[];
   return data;
