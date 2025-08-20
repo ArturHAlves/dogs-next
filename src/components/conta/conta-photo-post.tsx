@@ -6,7 +6,7 @@ import Button from '@/components/forms/button';
 import Input from '@/components/forms/input';
 import ErrorMessage from '../helper/error-message';
 import styles from './conta-photo-post.module.css';
-import registerUser from '@/actions/user-post';
+import photoPost from '@/actions/photo-post';
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -15,7 +15,7 @@ function FormButton() {
 }
 
 export default function ContaPhotoPost() {
-  const [state, action] = useFormState(registerUser, {
+  const [state, action] = useFormState(photoPost, {
     ok: false,
     error: '',
     data: null,
@@ -24,7 +24,6 @@ export default function ContaPhotoPost() {
   const [img, setImg] = React.useState('');
 
   function handleImgChange({ target }: React.ChangeEvent<HTMLInputElement>) {
-    console.log('target', target.files);
     if (target.files) {
       setImg(URL.createObjectURL(target.files[0]));
     }
