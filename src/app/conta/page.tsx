@@ -1,5 +1,8 @@
-
+import photosGet from '@/actions/photos-get';
+import userGet from '@/actions/user-get';
+import Feed from '@/components/feed/feed';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -7,6 +10,26 @@ export const metadata: Metadata = {
   description: 'Minha Conta no site ONG Dogs',
 };
 
-export default function Conta() {
-  return <div>Conta</div>;
+export default async function Conta() {
+  const { data: user } = await userGet();
+  console.log('user?.username', user?.username);
+
+  const { data } = await photosGet({ user: user?.username });
+
+  return (
+    <main>
+      {data?.length ? (
+        <Feed photos={data} />
+      ) : (
+        <div>
+          <p style={{ color: '#444', fontSize: '1.25rem', marginBottom: '1rem' }}>
+            Não tem nenhuma encontrada.
+          </p>
+          <Link href={'/conta/postar'} className="button" style={{ display: 'inline-block' }}>
+            Postar Foto
+          </Link>
+        </div>
+      )}
+    </main>
+  );
 }
