@@ -6,10 +6,9 @@ import photosGet, { Photo } from '@/actions/photos-get';
 
 type Props = {
   photos: Photo[];
-  user?: 0 | string;
 };
 
-export default function Feed({ photos, user }: Props) {
+export default function Feed({ photos }: Props) {
   const [photosFeed, setPhotosFeed] = useState<Photo[]>(photos);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -34,12 +33,7 @@ export default function Feed({ photos, user }: Props) {
       return;
     }
     async function getPagePhotos(page: number) {
-      const actionData = await photosGet(
-        { page, total: 6, user },
-        {
-          cache: 'no-store',
-        },
-      );
+      const actionData = await photosGet({ page, total: 6, user: 0 });
       if (actionData && actionData.data !== null) {
         const { data } = actionData;
         setPhotosFeed(currentPhotos => [...currentPhotos, ...data]);

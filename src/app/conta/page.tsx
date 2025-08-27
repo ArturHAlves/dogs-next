@@ -17,9 +17,9 @@ export default async function Conta() {
   const { data } = await photosGet({ user: user?.username });
 
   return (
-    <main>
+    <section>
       {data?.length ? (
-        <Feed photos={data} />
+        <Feed photos={data} user={user?.username} />
       ) : (
         <div>
           <p style={{ color: '#444', fontSize: '1.25rem', marginBottom: '1rem' }}>
@@ -30,6 +30,6 @@ export default async function Conta() {
           </Link>
         </div>
       )}
-    </main>
+    </section>
   );
 }
