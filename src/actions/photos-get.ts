@@ -22,11 +22,19 @@ type PhotosGetParams = {
 
 const API_URL = process.env.DOGS_API_URL ?? 'https://dogsapi.origamid.dev/json/api';
 
-export default async function photosGet({ page = 1, total = 6, user = 0 }: PhotosGetParams = {}) {
+export default async function photosGet(
+  { page = 1, total = 6, user = 0 }: PhotosGetParams = {},
+  optionsFront?: RequestInit,
+) {
   try {
-    const response = await fetch(`${API_URL}/photo/?_page=${page}&_total=${total}&_user=${user}`, {
+    const options = optionsFront || {
       next: { revalidate: 10, tags: ['photos'] },
-    });
+    };
+
+    const response = await fetch(
+      `${API_URL}/photo/?_page=${page}&_total=${total}&_user=${user}`,
+      options,
+    );
 
     if (!response.ok) {
       throw new Error('Erro ao pegar as fotos.');
