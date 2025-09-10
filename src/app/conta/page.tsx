@@ -12,8 +12,6 @@ export const metadata: Metadata = {
 
 export default async function Conta() {
   const { data: user } = await userGet();
-  console.log('user?.username', user?.username);
-
   const { data } = await photosGet({ user: user?.username });
 
   return (

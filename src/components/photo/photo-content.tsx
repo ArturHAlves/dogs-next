@@ -12,7 +12,7 @@ import { PhotoData } from '@/actions/photo-get';
 const PhotoContent = ({ data, single }: { data: PhotoData; single: boolean }) => {
   const { user } = useUser();
   const { photo, comments } = data;
-
+  
   return (
     <div className={`${styles.photo} ${single ? styles.single : ''}`}>
       <div className={styles.img}>

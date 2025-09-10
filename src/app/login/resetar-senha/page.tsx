@@ -15,8 +15,6 @@ type Props = {
 };
 
 export default function ResetarSenha({ searchParams }: Props) {
-  console.log(searchParams);
-
   return (
     <div className="animeLeft">
       <h1 className="title">Resete a Senha</h1>
