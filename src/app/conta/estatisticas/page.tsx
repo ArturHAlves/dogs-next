@@ -1,7 +1,12 @@
 import statsGet from '@/actions/stats-get';
-import ContaEstatisticas from '@/components/conta/conta-estatisticas';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import React from 'react';
+
+const ContaEstatisticas = dynamic(() => import('@/components/conta/conta-estatisticas'), {
+  loading: () => <p>Carregando...</p>,
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: 'Estatísticas | Minha Conta',

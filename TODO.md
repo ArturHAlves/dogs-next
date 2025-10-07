@@ -6,3 +6,4 @@ VERSÃO 2
 // TO DO - Criar modal para deletar foto 
 // TO DO - verificar demora para aparecer o botão de deletar foto
 // TO DO - Não permitir valores negativos nos campos peso e idade
+// TO DO - Melhorar o loading das estatisticas 
