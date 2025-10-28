@@ -5,7 +5,7 @@ export default function NotFound() {
     <section className="container">
       <h1 className="title">Página não encontrada</h1>
       <Link className="button" style={{ marginBottom: '1rem', display: 'inline-block' }} href={'/'}>
-        VOlte para a Home.
+        Volte para a Home.
       </Link>
     </section>
   );
