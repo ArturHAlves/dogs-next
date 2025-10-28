@@ -1,7 +1,15 @@
-import React from 'react'
+import photosGet from '@/actions/photos-get';
+import Feed from '@/components/feed/feed';
+import React from 'react';
 
-export default function PerfilUserPage({ params }: { params: { user: string } }) {
+export default async function PerfilUserPage({ params }: { params: { user: string } }) {
+  const { data } = await photosGet({ user: params.user });
+
+  if (!data) return null;
   return (
-    <div>Perfil: {params.user}</div>
-  )
+    <section className="container mainSection">
+      <h1 className="title">{params.user}</h1>
+      <Feed photos={data} user={params.user} />
+    </section>
+  );
 }
