@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import FeedPhotos from './feed-photos';
 import photosGet, { Photo } from '@/actions/photos-get';
+import FeedPhotos from '../feed/feed-photos';
 
 type Props = {
   photos: Photo[];
